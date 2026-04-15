@@ -119,10 +119,10 @@
             {{ plan.title || 'Trip Package' }}
           </h3>
           <p class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-tighter mb-2">
-            {{ plan.city?.city_name || 'Various Locations' }}
+            {{ plan.city?.name || 'Various Locations' }}
           </p>
           <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 line-clamp-2">
-            {{ plan.activity?.activity_name || 'Explore and more' }}
+            {{ plan.activity?.name || 'Explore and more' }}
           </p>
         </div>
 
@@ -198,7 +198,7 @@
                       </DialogTitle>
                       <p class="text-indigo-600 dark:text-indigo-400 font-semibold uppercase tracking-widest text-sm flex items-center">
                         <MapPinIcon class="w-4 h-4 mr-1" />
-                        {{ selectedPlan.city?.city_name }}
+                        {{ selectedPlan.city?.name }}
                       </p>
                     </div>
                     <button 
@@ -220,7 +220,7 @@
                           <div>
                             <p class="text-xs text-gray-500">Travel Period</p>
                             <p class="text-sm font-medium text-gray-900 dark:text-white">
-                              {{ formatDate(selectedPlan.day_from) }} - {{ formatDate(selectedPlan.day_to) }}
+                              {{ formatDate(selectedPlan.date_from) }} - {{ formatDate(selectedPlan.date_to) }}
                             </p>
                           </div>
                         </div>
@@ -242,7 +242,7 @@
                           <div>
                             <p class="text-xs text-gray-500">Main Experience</p>
                             <p class="text-sm font-medium text-gray-900 dark:text-white">
-                              {{ selectedPlan.activity?.activity_name }}
+                              {{ selectedPlan.activity?.name }}
                             </p>
                           </div>
                         </div>
@@ -255,8 +255,8 @@
                         <li v-for="spot in selectedPlan.tourist_spots" :key="spot.id" class="flex items-start gap-2">
                           <div class="w-1.5 h-1.5 bg-indigo-500 rounded-full mt-1.5 flex-shrink-0"></div>
                           <div>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ spot.tourist_spot_name }}</p>
-                            <p class="text-xs text-gray-500 line-clamp-1">{{ spot.tourist_spot_address }}</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ spot.name }}</p>
+                            <p class="text-xs text-gray-500 line-clamp-1">{{ spot.address }}</p>
                           </div>
                         </li>
                       </ul>
@@ -272,7 +272,7 @@
                         :key="dest.id"
                         class="px-3 py-1.5 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-lg text-xs font-medium border border-gray-100 dark:border-gray-700"
                        >
-                         {{ dest.activity?.activity_name || 'Additional Activity' }}
+                         {{ dest.activity?.name || 'Additional Activity' }}
                        </span>
                     </div>
                   </div>
@@ -339,8 +339,8 @@ const fetchDestinations = async () => {
     if (filters.value.activity) params.activity = filters.value.activity;
     if (filters.value.budget_min) params.budget_min = filters.value.budget_min;
     if (filters.value.budget_max) params.budget_max = filters.value.budget_max;
-    if (filters.value.day_from) params.day_from = filters.value.day_from;
-    if (filters.value.day_to) params.day_to = filters.value.day_to;
+    if (filters.value.day_from) params.date_from = filters.value.day_from;
+    if (filters.value.day_to) params.date_to = filters.value.day_to;
 
     const res = await api.get('/destination/search', { params });
     // Robust extraction: Handle data.data.data (paginated), data.data, or data
