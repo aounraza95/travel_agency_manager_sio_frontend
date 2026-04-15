@@ -9,16 +9,16 @@ const authStore = useAuthStore();
 
 <template>
   <div class="min-h-full">
-    <header v-if="authStore.isAuthenticated">
+    <header>
       <Navbar/>
     </header>
 
     <main>
-      <Header v-if="authStore.isAuthenticated"/>
+      <Header/>
       <router-view />
     </main>
 
-    <footer v-if="authStore.isAuthenticated">
+    <footer>
       <Footer/>
     </footer>
   </div>

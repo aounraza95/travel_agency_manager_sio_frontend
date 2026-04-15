@@ -10,11 +10,12 @@
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                     <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white dark:bg-gray-950/50' : 'text-gray-300 hover:bg-white/5 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
+                    <router-link v-if="authStore.isAdmin" to="/admin/plans" class="text-gray-300 hover:bg-white/5 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Admin Dashboard</router-link>
                     </div>
                 </div>
             </div>
             <div class="hidden md:block">
-            <div class="ml-4 flex items-center md:ml-6">
+            <div class="ml-4 flex items-center md:ml-6" v-if="authStore.isAuthenticated">
                 <button type="button" class="relative rounded-full p-1 text-gray-400 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
                 <span class="absolute -inset-1.5"></span>
                 <span class="sr-only">View notifications</span>
@@ -32,11 +33,21 @@
                 <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform scale-100" leave-to-class="transform opacity-0 scale-95">
                     <MenuItems class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg outline-1 outline-black/5 dark:bg-gray-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
                     <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
-                        <a :href="item.href" :class="[active ? 'bg-gray-100 outline-hidden dark:bg-white/5' : '', 'block px-4 py-2 text-sm text-gray-700 dark:text-gray-300']">{{ item.name }}</a>
+                        <a 
+                          :href="item.href" 
+                          @click.prevent="handleAction(item)"
+                          :class="[active ? 'bg-gray-100 outline-hidden dark:bg-white/5' : '', 'block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 pointer-cursor']"
+                        >
+                          {{ item.name }}
+                        </a>
                     </MenuItem>
                     </MenuItems>
                 </transition>
                 </Menu>
+            </div>
+            <!-- Guest actions -->
+            <div class="ml-4 flex items-center md:ml-6" v-else>
+              <router-link to="/login" class="text-gray-300 hover:bg-white/5 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Sign in</router-link>
             </div>
             </div>
             <div class="-mr-2 flex md:hidden">
@@ -55,7 +66,8 @@
         <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
             <DisclosureButton v-for="item in navigation" :key="item.name" as="a" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white dark:bg-gray-950/50' : 'text-gray-300 hover:bg-white/5 hover:text-white', 'block rounded-md px-3 py-2 text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</DisclosureButton>
         </div>
-        <div class="border-t border-white/10 pt-4 pb-3">
+        <!-- Mobile profile / login -->
+        <div class="border-t border-white/10 pt-4 pb-3" v-if="authStore.isAuthenticated">
             <div class="flex items-center px-5">
             <div class="shrink-0">
                 <img class="size-10 rounded-full outline -outline-offset-1 outline-white/10" :src="user.imageUrl" alt="" />
@@ -73,6 +85,11 @@
             <div class="mt-3 space-y-1 px-2">
             <DisclosureButton v-for="item in userNavigation" :key="item.name" as="a" :href="item.href" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-white/5 hover:text-white">{{ item.name }}</DisclosureButton>
             </div>
+        </div>
+        <div class="border-t border-white/10 pt-4 pb-3" v-else>
+          <div class="px-5">
+            <router-link to="/login" class="block rounded-md bg-indigo-600 px-3 py-2 text-base font-medium text-white hover:bg-indigo-700 text-center">Sign in</router-link>
+          </div>
         </div>
         </DisclosurePanel>
     </Disclosure>

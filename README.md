@@ -1,39 +1,63 @@
-# vue-project
+# Travel Agency Manager - Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+TawiwindCSSUI built in components are used for quick screens.
 
-## Recommended IDE Setup
+## Tech Stack
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **Framework**: [Vue 3](https://vuejs.org/) (Script Setup)
+- **Store**: [Pinia](https://pinia.vuejs.org/)
+- **Routing**: [Vue Router 4](https://router.vuejs.org/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcssui.com/)
+- **UI Components**: [Headless UI](https://headlessui.com/)
+- **Icons**: [Heroicons](https://heroicons.com/)
+- **HTTP Client**: [Axios](https://axios-http.com/)
 
-## Recommended Browser Setup
+## Installation
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+### Prerequisites
 
-## Customize configuration
+- [Node.js](https://nodejs.org/) (v20.19.0 or higher)
+- [npm](https://www.npmjs.com/)
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### Steps
 
-## Project Setup
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/aounraza95/travel_agency_manager_sio_frontend
+   cd vue-project
+   ```
 
-```sh
-npm install
-```
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-### Compile and Hot-Reload for Development
+3. **Environment Setup**
+   Ensure your backend API is running at `http://localhost:8000`. You can update the `baseURL` in `src/services/api.js` if necessary.
 
-```sh
+## 💻 Development
+
+Start the development server:
+```bash
 npm run dev
 ```
+The application will be available at `http://localhost:5173`.
 
-### Compile and Minify for Production
+## 🏗 Build
 
-```sh
+To build the project for production:
+```bash
 npm run build
 ```
-# travel_agency_manager_sio_frontend
+The production-ready files will be in the `dist/` directory.
+
+## 🧪 Preview
+
+To preview the production build locally:
+```bash
+npm run preview
+```
+
+## 📄 License
+
+[MIT](LICENSE)

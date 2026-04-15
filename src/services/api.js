@@ -9,7 +9,6 @@ const api = axios.create({
     },
 });
 
-// Request Interceptor
 api.interceptors.request.use((config) => {
     const authStore = useAuthStore();
     if (authStore.token) {
@@ -20,7 +19,6 @@ api.interceptors.request.use((config) => {
     return Promise.reject(error);
 });
 
-// Response Interceptor
 api.interceptors.response.use((response) => {
     return response;
 }, (error) => {
