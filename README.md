@@ -1,6 +1,6 @@
 # Travel Agency Manager - Frontend
 
-TawiwindCSSUI built in components are used for quick screens.
+Tailwind CSS UI built in components are used for quick screens.
 
 ## Tech Stack
 
@@ -24,7 +24,7 @@ TawiwindCSSUI built in components are used for quick screens.
 1. **Clone the repository**
    ```bash
    git clone https://github.com/aounraza95/travel_agency_manager_sio_frontend
-   cd vue-project
+   cd travel_agency_manager_sio_frontend
    ```
 
 2. **Install dependencies**
@@ -35,7 +35,7 @@ TawiwindCSSUI built in components are used for quick screens.
 3. **Environment Setup**
    Ensure your backend API is running at `http://localhost:8000`. You can update the `baseURL` in `src/services/api.js` if necessary.
 
-## 💻 Development
+## Development
 
 Start the development server:
 ```bash
@@ -43,7 +43,7 @@ npm run dev
 ```
 The application will be available at `http://localhost:5173`.
 
-## 🏗 Build
+## Build
 
 To build the project for production:
 ```bash
@@ -51,13 +51,17 @@ npm run build
 ```
 The production-ready files will be in the `dist/` directory.
 
-## 🧪 Preview
+## Preview
 
 To preview the production build locally:
 ```bash
 npm run preview
 ```
 
-## 📄 License
+## Test Login
 
-[MIT](LICENSE)
+ADMIN USER for /admin routes
+```bash
+Email: admin@example.com
+Password: password
+```
