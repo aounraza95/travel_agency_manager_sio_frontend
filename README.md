@@ -12,7 +12,25 @@ Tailwind CSS UI built in components are used for quick screens.
 - **Icons**: [Heroicons](https://heroicons.com/)
 - **HTTP Client**: [Axios](https://axios-http.com/)
 
-## Installation
+---
+
+## Option A: Quick Start with Docker (Recommended)
+
+This frontend can be run alongside the backend and database using Docker from the **backend repository**:
+
+1. Navigate to the **backend** directory:
+   ```bash
+   cd travel_agency_manager_sio_backend
+   ```
+2. Start the entire stack:
+   ```bash
+   docker-compose up -d --build
+   ```
+The frontend will then be available at [http://localhost:5173](http://localhost:5173).
+
+---
+
+## Option B: Manual Installation
 
 ### Prerequisites
 
